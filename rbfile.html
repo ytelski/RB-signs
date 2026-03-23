@@ -29,7 +29,10 @@
         }
 
         .card:hover { border-color: #007bff; background: #222; transform: translateY(-3px); }
-        .card img { width: 100%; border-radius: 4px; aspect-ratio: 16/9; object-fit: cover; }
+        .card img { width: 100%;
+            height: auto; /* Laat de hoogte automatisch bepalen */
+            border-radius: 4px;
+            display: block; /* Voorkomt witruimte onder het plaatje */ }
         .card p { font-size: 11px; margin-top: 8px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
         /* Melding onderin beeld */
@@ -47,6 +50,14 @@
 <div id="toast">Link gekopieerd!</div>
 
 <script>
+    const wachtwoord = "MijnGeheim123";
+
+    let poging = prompt("Voer het wachtwoord in om de assets te bekijken:");
+
+    if (poging !== wachtwoord) {
+        alert("Fout wachtwoord. De pagina wordt gesloten.");
+        window.location.href = "https://google.com"; // Stuur ze weg
+    } else {
     // LIJST MET JE PLAATJES
     // Je kunt hier lokale paden (zoals 'img/foto1.png') of URL's gebruiken
     const assets = [
@@ -65,7 +76,14 @@
         {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/6000x1000.jpg" },
         {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/4000x1000.jpg" },
         {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000.jpg" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000%20copy.jpg" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Waypoint-W_GPS.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/RBF2_BASEModv7.zip" },
+        {url: "     " },
+        {url: "     " },
+        {url: "     " },
+        {url: "     " },
+        {url: "     " },
+
 
 
 
