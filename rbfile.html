@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asset Link Copier</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: #eee; padding: 20px; }
+        h1 { text-align: center; color: #555; }
+
+        /* Het grid systeem */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* De kaartjes */
+        .card {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .card:hover { border-color: #007bff; background: #222; transform: translateY(-3px); }
+        .card img { width: 100%; border-radius: 4px; aspect-ratio: 16/9; object-fit: cover; }
+        .card p { font-size: 11px; margin-top: 8px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* Melding onderin beeld */
+        #toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: #28a745; color: white; padding: 10px 20px;
+            border-radius: 20px; display: none; z-index: 100;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Mijn Asset Library</h1>
+<div class="grid" id="gallery"></div>
+<div id="toast">Link gekopieerd!</div>
+
+<script>
+    // LIJST MET JE PLAATJES
+    // Je kunt hier lokale paden (zoals 'img/foto1.png') of URL's gebruiken
+    const assets = [
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/1000x1000.png" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/2000x1000.jpg" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/4000x1000.jpg" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/6000x1000.jpg" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/4000x1000.jpg" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000.jpg" },
+        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000%20copy.jpg" },
+
+
+
+
+    ];
+
+    const gallery = document.getElementById('gallery');
+    const toast = document.getElementById('toast');
+
+    // Genereer de kaartjes
+    assets.forEach(asset => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.innerHTML = `<img src="${asset.url}"><p>${asset.name}</p>`;
+
+        card.onclick = () => {
+            navigator.clipboard.writeText(asset.url); // Kopieer actie
+            showToast();
+        };
+        gallery.appendChild(card);
+    });
+
+    function showToast() {
+        toast.style.display = 'block';
+        setTimeout(() => { toast.style.display = 'none'; }, 2000);
+    }
+</script>
+</body>
+</html>
