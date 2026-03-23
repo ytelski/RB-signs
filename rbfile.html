@@ -8,16 +8,14 @@
         body { font-family: 'Segoe UI', sans-serif; background: #0f0f0f; color: #eee; padding: 20px; }
         h1 { text-align: center; color: #555; }
 
-        /* Het grid systeem */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
-            max-width: 1200px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* De kaartjes */
         .card {
             background: #1a1a1a;
             border: 1px solid #333;
@@ -26,16 +24,29 @@
             cursor: pointer;
             transition: all 0.2s ease;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover { border-color: #007bff; background: #222; transform: translateY(-3px); }
-        .card img { width: 100%;
-            height: auto; /* Laat de hoogte automatisch bepalen */
-            border-radius: 4px;
-            display: block; /* Voorkomt witruimte onder het plaatje */ }
-        .card p { font-size: 11px; margin-top: 8px; color: #888; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* Melding onderin beeld */
+        .card img {
+            width: 100%;
+            height: auto; /* Originele verhouding fix */
+            border-radius: 4px;
+            display: block;
+        }
+
+        .card p {
+            font-size: 11px;
+            margin-top: 10px;
+            color: #888;
+            word-break: break-all;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
         #toast {
             position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: #28a745; color: white; padding: 10px 20px;
@@ -51,65 +62,66 @@
 
 <script>
     const wachtwoord = "MijnGeheim123";
-
     let poging = prompt("Voer het wachtwoord in om de assets te bekijken:");
 
     if (poging !== wachtwoord) {
         alert("Fout wachtwoord. De pagina wordt gesloten.");
-        window.location.href = "https://google.com"; // Stuur ze weg
+        window.location.href = "https://google.com";
     } else {
-    // LIJST MET JE PLAATJES
-    // Je kunt hier lokale paden (zoals 'img/foto1.png') of URL's gebruiken
-    const assets = [
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/1000x1000.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/2000x1000.jpg" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/4000x1000.jpg" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/6000x1000.jpg" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/4000x1000.jpg" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000.jpg" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Waypoint-W_GPS.png" },
-        {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/RBF2_BASEModv7.zip" },
-        {url: "     " },
-        {url: "     " },
-        {url: "     " },
-        {url: "     " },
-        {url: "     " },
+        // LIJST MET JE PLAATJES
+        const assets = [
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow4000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/1000x1000.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/2000x1000.jpg" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/4000x1000.jpg" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/StandAlone/6000x1000.jpg" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/4000x1000.jpg" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000.jpg" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Waypoint-W_GPS.png" },
+            {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/RBF2_BASEModv7.zip" }
+        ];
 
+        const gallery = document.getElementById('gallery');
+        const toast = document.getElementById('toast');
 
+        assets.forEach(asset => {
+            // Check of de URL leeg is
+            if(asset.url.trim() === "") return;
 
+            // Pak de bestandsnaam uit de URL voor de tekst onder het plaatje
+            const fileName = asset.name || asset.url.split('/').pop();
 
+            const card = document.createElement('div');
+            card.className = 'card';
 
-    ];
+            // Als het een .zip is, laat een icoon zien ipv een kapot plaatje
+            const isZip = asset.url.toLowerCase().endsWith('.zip');
+            const mediaHtml = isZip
+                ? `<div style="padding:20px; font-size:30px;">📦<br><span style="font-size:12px">ZIP Bestand</span></div>`
+                : `<img src="${asset.url}" alt="${fileName}">`;
 
-    const gallery = document.getElementById('gallery');
-    const toast = document.getElementById('toast');
+            card.innerHTML = `${mediaHtml}<p>${fileName}</p>`;
 
-    // Genereer de kaartjes
-    assets.forEach(asset => {
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML = `<img src="${asset.url}"><p>${asset.name}</p>`;
+            card.onclick = () => {
+                navigator.clipboard.writeText(asset.url);
+                showToast();
+            };
+            gallery.appendChild(card);
+        });
 
-        card.onclick = () => {
-            navigator.clipboard.writeText(asset.url); // Kopieer actie
-            showToast();
-        };
-        gallery.appendChild(card);
-    });
-
-    function showToast() {
-        toast.style.display = 'block';
-        setTimeout(() => { toast.style.display = 'none'; }, 2000);
-    }
+        function showToast() {
+            toast.style.display = 'block';
+            setTimeout(() => { toast.style.display = 'none'; }, 2000);
+        }
+    } // <-- Deze accolade ontbrak!
 </script>
 </body>
 </html>
