@@ -56,16 +56,16 @@
 </head>
 <body>
 
-<h1>Mijn Asset Library</h1>
+<h1>Assets</h1>
 <div class="grid" id="gallery"></div>
-<div id="toast">Link gekopieerd!</div>
+<div id="toast">Copied link!</div>
 
 <script>
-    const wachtwoord = "MijnGeheim123";
-    let poging = prompt("Voer het wachtwoord in om de assets te bekijken:");
+    const wachtwoord = "FBR2k26";
+    let poging = prompt("Enter password");
 
     if (poging !== wachtwoord) {
-        alert("Fout wachtwoord. De pagina wordt gesloten.");
+        alert("Wrong password.");
         window.location.href = "https://google.com";
     } else {
         // LIJST MET JE PLAATJES
@@ -87,6 +87,12 @@
             {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/Promo/6000x1000.jpg" },
             {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Waypoint-W_GPS.png" },
             {url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/RBF2_BASEModv7.zip" }
+			{url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/faster.png" }
+			{url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/ORBR_RBFS1_by_sms.zip" }
+			{url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow6000x1000.png" }
+			{url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow6000x1000.png" }
+			{url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowRight/RB-faster-right-arrow2000x1000.png" }
+			{url: "https://nadeo-download.cdn.ubi.com/trackmania/assets/RedBull/Pannels/ArrowLeft/RB-faster-left-arrow2000x1000.png" }
         ];
 
         const gallery = document.getElementById('gallery');
